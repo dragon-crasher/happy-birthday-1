@@ -275,6 +275,33 @@ const animationTimeline = () => {
       "+=1"
     )
 
+    
+    
+    .call(() => {
+      console.log("CALL TRIGGERED: showing play button");
+      const playBtn = document.getElementById("play-song-btn");
+      const favSong = document.getElementById("fav-song");
+
+      // Make it visible for GSAP animation
+      playBtn.style.display = "inline-block";
+
+      TweenMax.to(playBtn, 0.6, {
+        scale: 1,
+        opacity: 1,
+        ease: Back.easeOut.config(1.7)
+      });
+
+      playBtn.addEventListener("click", function handler() {
+        favSong.play();
+        playBtn.removeEventListener("click", handler);
+        playBtn.style.display = "none";
+
+        // triggerCandleScene();  // Optional: trigger candle reveal
+        tl.resume();             // Continue animation
+      });
+    })
+
+    .addPause("pauseForSong") // Stops timeline
 
     .staggerFromTo(
       ".baloons img",
@@ -377,26 +404,7 @@ const animationTimeline = () => {
   // tl.timeScale(2);
     // Setup Play Song Button
   // Show the play button after everything
-    tl.call(() => {
-  const playBtn = document.getElementById("play-song-btn");
-  const favSong = document.getElementById("fav-song");
-
-  // Show the button first
-  playBtn.style.display = "inline-block";
-
-  // Animate button appearance (GSAP 2 syntax)
-  TweenMax.fromTo(
-    "#play-song-btn",
-    0.6,
-    { scale: 0.5, opacity: 0 },
-    { scale: 1, opacity: 1, ease: Back.easeOut.config(1.7) }
-  );
-
-  // Attach click event
-  playBtn.addEventListener("click", () => {
-    favSong.play();
-  });
-});
+    
 
 
 
