@@ -373,7 +373,6 @@ const animationTimeline = () => {
       },
       "party"
     )
-    .addPause("pauseForWish")
     .staggerTo(
       ".eight svg",
       1.5,
