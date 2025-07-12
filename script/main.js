@@ -398,8 +398,20 @@ const animationTimeline = () => {
         rotation: 90
       },
       "+=1"
-    );
+    )
 
+    .from(
+      ".bye",
+      0.5,
+      {
+        scale: 3.5,
+        opacity: 0,
+        x: 25,
+        y: -25,
+        rotationZ: -45
+      },
+      "-=2"
+    );
   // tl.seek("currentStep");
   // tl.timeScale(2);
     // Setup Play Song Button
