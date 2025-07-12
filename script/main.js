@@ -329,8 +329,8 @@ const animationTimeline = () => {
       "-=2"
     )
     .from(".hat", 0.5, {
-      x: -100,
-      y: 350,
+      x: -140,
+      y: 330,
       rotation: -180,
       opacity: 0
     })
@@ -373,6 +373,7 @@ const animationTimeline = () => {
       },
       "party"
     )
+    .addPause("pauseForWish")
     .staggerTo(
       ".eight svg",
       1.5,
