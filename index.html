@@ -15,9 +15,9 @@
   <div class="container">
     <div class="one">
       <h1 class="one">
-        <span data-node-name="greeting">Hey</span>
-        <span data-node-name="name">Bhavana</span>
+        <span data-node-name="greeting">Hey </span>
       </h1>
+      <h1 class="one" data-node-name="name">Bhavana</h1>
       <p class="two" data-node-name="greetingText">Good Morning !! (......... wait you don't like good morn-)</p>
     </div>
     <div class="three">
@@ -38,6 +38,7 @@
       <p class="idea-4" data-node-name="text5Entry">Because,</p>
       <p class="idea-5">
         <span data-node-name="text5Content">You are Jathre</span>
+        <span data-node-name="text4Adjective">Jathre</span>
         <span class="smiley" data-node-name="smiley">:)</span>
       </p>
       <p class="idea-6">
@@ -47,15 +48,26 @@
     </div>
 
 
-    <div id="dark-overlay" ></div>
-    <div id="candle-wrapper" class="holder">
-      <div class="candle">
-        <div id="flame-wrapper" class="blinking-glow"></div>
-        <div class="thread"></div>
-        <div id="flame-wrapper" class="glow"></div>
-        <div id="flame-wrapper" class="flame"></div>
+    <!-- <div id="dark-overlay" ></div> -->
+    <audio id="birthday-audio" src="audio/hbd.mp3" preload="auto"></audio>
+
+    <audio id="fav-song" src="audio/favsong.mp3" preload="auto"></audio>
+
+
+
+    <!-- <div id="cake-scene">
+      <div id="cake-wrapper">
+        <img src="img/cake.png" alt="Cake" id="cake" />
+        <div id="candle-wrapper" class="holder">
+          <div class="candle">
+            <div class="blinking-glow"></div>
+            <div class="thread"></div>
+            <div class="glow"></div>
+            <div class="flame"></div>
+          </div>
+        </div>
       </div>
-    </div>
+    </div> -->
 
 
     <!-- Overlay & Light Reveal -->
@@ -63,7 +75,7 @@
     <div id="visibility-circle"></div>
    
     <div class="six">
-      <img src="img/lydia2.png" alt="" class="lydia-dp" data-node-name="imagePath">
+      <img src="img/Bhavana.jpg" alt="" class="lydia-dp" data-node-name="imagePath">
       <img src="img/hat.svg" alt="" class="hat">
       <div class="wish">
         <h3 class="wish-hbd" data-node-name="wishHeading">Happy Birthday!</h3>
@@ -140,6 +152,9 @@
       <p data-node-name="outroText">Okay, now come back and tell me if you liked it.</p>
       <p id="replay" data-node-name="replayText">Or click, if you want to watch it again.</p>
       <p class="last-smile" data-node-name="outroSmiley">:)</p>
+      <!-- <p> <br><br><br><br><br> A song for all your problems </p> -->
+      <button id="play-song-btn" class="play-btn" style="display: none;">Play a song!</button>
+
     </div>
   </div>
 </body>

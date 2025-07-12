@@ -2,8 +2,8 @@
   "greeting": "Hiya",
   "name": "Bhavana",
   "greetingText": "Good Morning!! (......... wait you don't like good morn-)",
-  "wishText": "May the js.prototypes always be with you! ;)",
-  "imagePath": "img/lydia2.png",
+  "wishText": "May you manifest all your dreams and desires this year.",
+  "imagePath": "img/Bhavana.jpg",
   "text1": "It's your birthday!!! :D",
   "textInChatBox": "Happy birthday to you!! Many many happy blah...",
   "sendButtonLabel": "Send",
@@ -12,12 +12,13 @@
   "text4": "I realised, I wanted to do something",
   "text4Adjective": "Jathre",
   "text5Entry": "Because,",
-  "text5Content": "You are Jathre",
+  "text5Content": "You are",
   "smiley": ":)",
   "bigTextPart1": "S",
   "bigTextPart2": "O",
   "wishHeading": "Happy Birthday!",
-  "outroText": "Okay, now come back and tell me if you liked it.",
-  "replayText": "Or click, if you want to watch it again.",
-  "outroSmiley": ":)"
+  "outroText": "Looking forward to hearing more lion soup jokes from 22 (21?) year old you.",
+  "replayText": "Wishing you Success and Happinness for years to come.",
+  "outroSmiley": ":)",
+  "diff": "A song for all your problems"
 }

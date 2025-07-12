@@ -1,48 +1,81 @@
 // Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")
-    .then(data => data.json())
+    .then(res => {
+      if (!res.ok) throw new Error("Failed to load customize.json");
+      return res.json();
+    })
     .then(data => {
-      dataArr = Object.keys(data);
-      dataArr.map(customData => {
-        if (data[customData] !== "") {
+      const dataArr = Object.keys(data);
+      dataArr.forEach(customData => {
+        const el = document.querySelector(`[data-node-name*="${customData}"]`);
+
+        if (data[customData] !== "" && el) {
           if (customData === "imagePath") {
-            document
-              .querySelector(`[data-node-name*="${customData}"]`)
-              .setAttribute("src", data[customData]);
+            el.setAttribute("src", data[customData]);
           } else {
-            document.querySelector(`[data-node-name*="${customData}"]`).innerText = data[customData];
+            el.innerText = data[customData];
           }
         }
-
-        // Check if the iteration is over
-        // Run amimation if so
-        if ( dataArr.length === dataArr.indexOf(customData) + 1 ) {
-          animationTimeline();
-        } 
       });
+
+      // 🔥 Only call animation once, after loop is done
+      animationTimeline();
+    })
+    .catch(err => {
+      console.error("Error loading or parsing customize.json:", err);
+      // Fallback: run animation anyway
+      animationTimeline();
     });
 };
+
 
 
 function triggerCandleScene() {
   const darkOverlay = document.getElementById("dark-overlay");
   const cakeScene = document.getElementById("cake-scene");
   const visibilityCircle = document.getElementById("visibility-circle");
+  const audio = document.getElementById("birthday-audio");
 
-  // Fade screen to black
+  // Step 1: Fade to black
   darkOverlay.style.opacity = "1";
 
-  // Wait 3 seconds
+  // Step 2: Wait and reveal cake
   setTimeout(() => {
     cakeScene.style.visibility = "visible";
+
+    // Show candle & scale up
+    const candle = document.getElementById('candle-wrapper');
+    candle.style.visibility = 'visible';
+    candle.style.transform = 'scale(1) translateY(-70%)';
+
+    // Play birthday music
+    audio.play();
+
+    // Expand the visibility circle
     startVisibilityCircle();
-  }, 3000);
+
+    // Optional: Blow out the flame after 3s
+    setTimeout(() => {
+      document.querySelector(".flame").style.opacity = "0";
+    }, 3000);
+
+    // Show balloons and wish text
+    setTimeout(() => {
+      document.querySelector(".baloons").style.display = "block";
+      document.querySelector(".wish").style.display = "block";
+    }, 3500);
+
+  }, 3000); // Delay after fade to black
 }
+
 
 
 function startVisibilityCircle() {
   const visibilityCircle = document.getElementById('visibility-circle');
+
+  
+
 
   // Animate the radial mask to expand the transparent hole
   visibilityCircle.animate([
@@ -242,7 +275,6 @@ const animationTimeline = () => {
       "+=1"
     )
 
-    .call(triggerCandleScene)
 
     .staggerFromTo(
       ".baloons img",
@@ -343,6 +375,31 @@ const animationTimeline = () => {
 
   // tl.seek("currentStep");
   // tl.timeScale(2);
+    // Setup Play Song Button
+  // Show the play button after everything
+    tl.call(() => {
+  const playBtn = document.getElementById("play-song-btn");
+  const favSong = document.getElementById("fav-song");
+
+  // Show the button first
+  playBtn.style.display = "inline-block";
+
+  // Animate button appearance (GSAP 2 syntax)
+  TweenMax.fromTo(
+    "#play-song-btn",
+    0.6,
+    { scale: 0.5, opacity: 0 },
+    { scale: 1, opacity: 1, ease: Back.easeOut.config(1.7) }
+  );
+
+  // Attach click event
+  playBtn.addEventListener("click", () => {
+    favSong.play();
+  });
+});
+
+
+
 
   // Restart Animation on click
   const replyBtn = document.getElementById("replay");
