@@ -24,11 +24,55 @@ const fetchData = () => {
     });
 };
 
+
+function triggerCandleScene() {
+  const darkOverlay = document.getElementById("dark-overlay");
+  const cakeScene = document.getElementById("cake-scene");
+  const visibilityCircle = document.getElementById("visibility-circle");
+
+  // Fade screen to black
+  darkOverlay.style.opacity = "1";
+
+  // Wait 3 seconds
+  setTimeout(() => {
+    cakeScene.style.visibility = "visible";
+    startVisibilityCircle();
+  }, 3000);
+}
+
+
+function startVisibilityCircle() {
+  const visibilityCircle = document.getElementById('visibility-circle');
+
+  // Animate the radial mask to expand the transparent hole
+  visibilityCircle.animate([
+    {
+      maskImage: 'radial-gradient(circle at center, transparent 0%, black 1%)',
+      WebkitMaskImage: 'radial-gradient(circle at center, transparent 0%, black 1%)'
+    },
+    {
+      maskImage: 'radial-gradient(circle at center, transparent 60%, black 100%)',
+      WebkitMaskImage: 'radial-gradient(circle at center, transparent 60%, black 100%)'
+    }
+  ], {
+    duration: 3000,
+    easing: 'ease-out',
+    fill: 'forwards'
+  });
+}
+
+
+
+
+
+
 // Animation Timeline
 const animationTimeline = () => {
   // Spit chars that needs to be animated individually
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
+
+  // document.getElementById('candle-wrapper').style.transform = 'scale(0.4)';
 
   textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
     .split("")
@@ -172,6 +216,8 @@ const animationTimeline = () => {
       },
       "+=2"
     )
+
+    
     .staggerFrom(
       ".idea-6 span",
       0.8,
@@ -195,6 +241,9 @@ const animationTimeline = () => {
       0.2,
       "+=1"
     )
+
+    .call(triggerCandleScene)
+
     .staggerFromTo(
       ".baloons img",
       2.5,
